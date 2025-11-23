@@ -1,0 +1,513 @@
+/* Course: CS100 Coding Foundations--Basque_October 2025
+Author: Miguel Angel de Pablo */
+
+/* === BASE SET & VARIABLES === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-bg: #2d2d2d;
+  --secondary-bg: #1e1e1e;
+  --secondary-FOOTER: #191a1d;
+  --header-bg: #111111;
+  --text-color: #fbfbfb;
+  --btn-primary: #4cd964;
+  --btn-secondary: #000000;
+  --explore-color: #d8c66e;
+  --spark-color: #a4a4a6;
+}
+
+/* === GLOBAL BODY & LAYOUT === */
+
+/*
+  Full viewport layout using flexbox to enable sticky footer behavior.
+  Overflow-x hidden prevents horizontal scroll on small viewports.
+*/
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Helvetica', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to top left, #0a0b0c, #41454e);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* 
+  Standard container for content alignment.
+  Width is 100% to ensure full responsiveness within the gradient background.
+*/
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* === SITE HEADER === */
+
+.site-header {
+  background-color: var(--header-bg);
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+  width: 100%;
+}
+
+/*
+  Main header layout: logo on left, nav in center, actions on right.
+  align-items: flex-start ensures header content aligns to top.
+*/
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  flex: 0 0 auto;
+  margin-top: 5px;
+}
+
+.logo img {
+  max-width: 195px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* === MAIN NAVIGATION === */
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  font-size: 0.9rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  cursor: pointer;
+  position: relative;
+}
+
+/* Primary navigation links: Pens, Projects, Posts, Collections */
+.main-nav li:nth-child(2),
+.main-nav li:nth-child(3),
+.main-nav li:nth-child(4),
+.main-nav li:nth-child(5) {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+/* Spark menu item: customized color and size */
+.spark-item {
+  font-weight: normal;
+  color: var(--spark-color);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.spark-item::before {
+  content: "Spark \20 ˅";
+  color: var(--spark-color);
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+/*
+  'EXPLORE' is positioned as a separate block above main nav.
+  Negative margin-bottom pulls main nav up for visual stacking.
+*/
+.explore-item {
+  margin-left: 0px;
+  margin-bottom: -25px;
+  width: 100%;
+  text-align: left;
+  display: block;
+}
+
+.explore-text {
+  color: var(--explore-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/*
+  Manual positioning of the entire nav block.
+  Negative margins adjust its horizontal placement relative to logo.
+*/
+.main-nav {
+  margin-right: -280px;
+  margin-left: -50px;
+  display: block;
+}
+
+/* === HEADER ACTION BUTTONS === */
+
+/*
+  Aligns action buttons (Create, Search, Log In, Sign Up) to the right.
+  Manual margin compensates for nav positioning offsets.
+*/
+.header-actions {
+  margin-left: calc(50px + 100px);
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+}
+
+.header-actions button {
+  padding: 15px 18px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #36383f;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* 'Create' button: special green background with custom down-arrow */
+.btn-create {
+  background-color: #4acb78;
+  color: white;
+}
+
+.btn-create::after {
+  content: " ˅";
+  color: #4acb78;
+  font-size: 1.3rem;
+  margin-left: 5px;
+}
+
+/* Search icon: centered vertically with adjacent buttons */
+.search-icon {
+  margin: 0 10px;
+  align-self: center;
+}
+
+/* === HERO SECTION === */
+
+/*
+  Main content area. Uses flex: 1 to occupy remaining vertical space.
+  Top padding provides spacing below header. Bottom padding is removed
+  to allow image to visually connect with footer.
+*/
+.hero {
+  flex: 1;
+  margin-top: 0;
+  padding: 60px 0 0;
+  display: flex;
+  align-items: stretch;
+  
+}
+
+/*
+  Hero layout: two-column on desktop, stacked on mobile.
+  align-items: flex-start ensures content aligns to top.
+*/
+.hero-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  
+}
+
+.hero-text-block {
+  flex: 1;
+  max-width: 500px;
+  height: 25%;
+}
+
+.hero-image-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  height: 50%; 
+}
+
+.hero-text {
+  max-width: 100%;
+  color: #acaeb1;
+  height: 20%;
+}
+
+.hero-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  font-weight: normal;
+  color: #acaeb1;
+}
+
+.hero-text h2 strong {
+  font-weight: bold;
+  color: #fbfbfb
+}
+
+.hero-paragraph-large {
+  margin-bottom: 10px;
+  line-height: 1.2;
+  font-weight: normal;
+  color: #acaeb1;
+  font-size: 2rem;
+}
+
+/* Call-to-action buttons */
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* Primary CTA: Green 'Sign Up' button */
+.btn-primary {
+  background-color: var(--btn-primary);
+  color: black;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 24px;
+  cursor: pointer;
+  font-family: 'Helvetica', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.btn-primary:hover {
+  background-color: #40c957;
+}
+
+/* Secondary CTA: Black 'Learn More' button */
+.btn-secondary {
+  background-color: var(--btn-secondary);
+  color: white;
+  padding: 12px 26px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 24px;
+  cursor: pointer;
+  font-family: 'Helvetica', Tahoma, Geneva, Verdana, sans-serif;
+  border-style: none;
+  line-height: 1.4;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.btn-secondary:hover {
+  background-color: #111;
+}
+
+/* === HERO IMAGE & OVERLAY === */
+
+/*
+  Image container with horizontal offset.
+  Width exceeds 100% to create intentional overflow effect.
+  Note: transform declarations are duplicated; only last one applies.
+*/
+.interface-image-container {
+  transform: translateY(-0px);
+  transform: translateX(35px);
+  width: 110%;
+}
+
+.image-text-separate {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  z-index: 3;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.interface-image {
+  width: calc(100% + 100px);
+  height: 80%; 
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transform: translateX(-10px);
+  display: block;
+  flex: 0 0 auto;
+}
+
+.image-text-separate p {
+  margin: 0;
+  color: #fbfbfb;
+  font-size: 1.2rem;
+  font-weight: normal;
+  display: inline;
+}
+
+.image-text-separate p strong {
+  color: #00bfff;
+  font-weight: bold;
+}
+
+.image-text-separate p span.exclamation {
+  color: #fbfbfb;
+  font-weight: normal;
+}
+
+/* === SITE FOOTER === */
+
+.site-footer {
+  background-color: var(--secondary-FOOTER);
+  margin-top: -80px;
+  padding: 0 0 125px;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0px;
+  width: 100%;
+
+}
+
+.footer-item {
+  text-align: center;
+  padding: 20px;
+  background-color: #36383f;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px; 
+  border: 2px solid #37454f;
+  border-color: #37454f solid; 
+}
+
+/* Footer title: 'CodePen for X' */
+.footer-item h3 {
+  font-size: 1.2rem;
+  font-weight:bold;
+  line-height: 1.2;
+  margin: 0 0 0 0; 
+}
+
+/* Footer keyword emphasis: 'TEAMS', 'EDUCATION', etc. */
+.footer-item strong {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+/*
+  Button row within footer items.
+  Uses CSS Grid for precise 1px gap control between buttons.
+*/
+.footer-item .btn-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1px; 
+  width: 100%; 
+  margin: 0;
+  padding: 0;
+}
+
+
+.footer-item .btn-row button,
+.footer-item .btn-row .btn,
+.footer-item .btn-row a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #656565;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 0; 
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.footer-item strong {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+/* === RESPONSIVE MEDIA QUERIES === */
+
+/*
+  Mobile-first responsive adjustments.
+  Stacks hero columns, reduces font sizes, and adjusts button padding.
+*/
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+  }
+
+  .hero-text-block,
+  .hero-image-block {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .main-nav ul {
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+
+  .header-actions button {
+    padding: 6px 12px;
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
