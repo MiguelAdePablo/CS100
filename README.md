@@ -25,6 +25,6 @@ The main identified files and folders are [1]:
 
 ## Project Sample
 
-Below is a sample image, `Captura.png`, located within the `Images` folder, demonstrating the visual result of the project:
+Below is a sample image, `Captura.png`, located within the `Images` folder:
 
-![Application Screenshot](Images/Captura.png)
+![Application Screenshot](Images/Captura.PNG)
