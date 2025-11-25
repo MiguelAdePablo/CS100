@@ -10,14 +10,14 @@ The primary languages in this repository are:
 
 ## Project Structure (Web Page Dependencies)
 
-The core web page is represented by the `Index.html` file [1]. It relies on two main dependent folders for its functionality and presentation:
+The core web page is represented by the `Index.html` file. It relies on two main dependent folders for its functionality and presentation:
 
-1.  **`Styles` folder:** This folder holds the stylesheets (CSS files) necessary for formatting and designing the web page [1]. This aligns with the high percentage of CSS code found in the repository [2].
-2.  **`Images` folder:** This folder is designated to store the visual assets, such as screenshots or graphics, used by the web page [1].
+1.  **`Styles` folder:** This folder holds the stylesheets (CSS files) necessary for formatting and designing the web page. This aligns with the high percentage of CSS code found in the repository [2].
+2.  **`Images` folder:** This folder is designated to store the visual assets, such as screenshots or graphics, used by the web page.
 
 ### Repository Contents
 
-The main identified files and folders are [1]:
+The main identified files and folders are:
 *   `Index.html` (The primary web page)
 *   `Styles` (Contains styling information)
 *   `Images` (Contains visual assets)
